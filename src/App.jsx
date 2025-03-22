@@ -14,15 +14,7 @@ import PricingBasic from './pages/PricingBasic';
 import PricingEnterprice from './pages/PricingEnterprice';
 import PricingPro from './pages/PricingPro';
 
-
-
-
-
-
 import ProtectedRoute from './components/ProtectedRoute';
-
-
-
 
 import AIFeatures from './pages/AIFeatures';
 import AiThemeGen from './pages/features/AiThemeGen';
@@ -30,12 +22,7 @@ import AiCharacterGen from './pages/features/AiCharacterGen';
 import AiImageGen from './pages/features/AiImageGen';
 import AiBackgroundGen from './pages/features/AiBackgroundGen';
 import DashboardC from './pages/DashboardC';
-
-
-
-
-
-
+import VideoGenerator from './pages/features/VideoGenerator';
 
 function App() {
   return (  
@@ -50,6 +37,7 @@ function App() {
           <Route path="pricing/basic" element={<PricingBasic />} />
           <Route path="pricing/enterprise" element={<PricingEnterprice />} />
           <Route path="pricing/pro" element={<PricingPro />} />
+          
     
         
           <Route path="ai-features" element={<AIFeatures/>} />
@@ -59,6 +47,8 @@ function App() {
           <Route path="ai-features/AICharacterGen" element={<AiCharacterGen/>} />
           <Route path="ai-features/AIImageGen" element={<AiImageGen/>} />
           <Route path="ai-features/AIBackgroundGen" element={<AiBackgroundGen/>} />
+          <Route path="ai-features/VideoGenerator" element={<VideoGenerator/>} />
+          
           
         
 

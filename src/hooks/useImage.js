@@ -40,7 +40,7 @@ export function useImage() {
         setImageUrl(data.output_url);
 
         // Call useRemoveCredits only if image generation is successful
-        await removeCredits();
+        await removeCredits(5);
       } else {
         throw new Error("Failed to generate image");
       }

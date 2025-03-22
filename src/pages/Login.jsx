@@ -25,7 +25,7 @@ const handleSubmit = async (e) => {
   try {
     // await login(email, password); // Use login function from AuthContext
 
-    if (email === "admin@airumi.org" && password === "@Abc123456") {
+    if (email === "admin@newtonai.net" && password === "@Abc123456") {
       localStorage.setItem("Admin", "Done");
       navigate('/admin')
     } else {

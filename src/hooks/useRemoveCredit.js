@@ -1,12 +1,17 @@
 import { useState } from "react";
-const API_URL = import.meta.env.VITE_REACT_APP_API_URL; 
+const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 
 const useRemoveCredits = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [credits, setCredits] = useState(null);
 
-  const removeCredits = async () => {
+  const removeCredits = async (amount) => {
+    if (!amount || amount <= 0) {
+      setError("Invalid credit amount");
+      return;
+    }
+
     setLoading(true);
     setError(null);
     const token = localStorage.getItem("token");
@@ -18,24 +23,21 @@ const useRemoveCredits = () => {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
         },
+        body: JSON.stringify({ amount })
       });
 
-      // Check if the response is OK
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      // Parse the response as JSON
       const data = await response.json();
 
       if (!data.success) {
         throw new Error(data.error || "Failed to remove credits");
       }
 
-      // Set the updated credits
       setCredits(data.credits);
-
-      return data; // Return the response data for further use
+      return data;
     } catch (err) {
       console.error("Remove credits error:", err);
       setError(err.message || "An error occurred while removing credits");
